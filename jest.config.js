@@ -1,8 +1,6 @@
 // jest.config.js
 module.exports = {
-  testMatch: [
-    "<rootDir>/test/william*.test.js",
-  ],
+  testMatch: ["<rootDir>/test/*.test.js"], // just match all tests in /test folder
   setupFiles: ["<rootDir>/jest.setup.js"],
   collectCoverage: true,
   collectCoverageFrom: [
