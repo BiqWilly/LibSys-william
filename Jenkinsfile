@@ -20,7 +20,7 @@ pipeline {
         
                 // testing backend/api
                 echo 'Step 4: Running Automated Unit Tests'
-                bat 'npm run test -verbose'
+                bat 'npx jest test'
 
                 // testing frontend/e2e
                 echo 'Step 5: Running Automated E2E Tests (Frontend)...'
