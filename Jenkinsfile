@@ -10,13 +10,13 @@ pipeline {
         }
 
         stage('Test') {
-            steps {
-                echo 'Step 2: Installing Dependencies...'
-                // This ensures Jest and Playwright are available in the workspace
-                bat 'npm install'
-                
-                echo 'Step 3: Running Automated Unit Tests (Jest)...'
-                bat 'npm run test:william'
+    steps {
+        echo 'Step 2: Installing Dependencies...'
+        bat 'npm install'
+        
+        echo 'Step 3: Running Automated Unit Tests...'
+        // This forces Jest to find ANY test file in the test folder regardless of the config match
+        bat 'npx jest test/william.util.test.js test/william.api.test.js'
             }
         }
     }
