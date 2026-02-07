@@ -1,6 +1,6 @@
 const fs = require('fs').promises;
 const path = require('path');
-const RESOURCES_FILE = path.join('utils', 'resources.json');
+const RESOURCES_FILE = path.join(__dirname, '../utils/resources.json');
 async function deleteResource(req, res) {
 try {
 const { id } = req.params;
@@ -28,5 +28,3 @@ return res.status(500).json({ message: error.message });
 }
 }
 module.exports = { deleteResource };
-
-// somehow this is not in github
