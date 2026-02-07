@@ -13,9 +13,18 @@ pipeline {
             steps {
                 echo 'Step 2: Installing Dependencies...'
                 bat 'npm install'
+
+                // installing playwright browsers for Jenkins
+                echo 'Step 3: Installing Playwright Browsers...'
+                bat 'npx playwright install'
         
-                echo 'Step 3: Running Automated Unit Tests...'
-                bat 'npx jest test/ --passWithNoTests'
+                // testing backend/api
+                echo 'Step 4: Running Automated Unit Tests'
+                bat 'npm run test -verbose'
+
+                // testing frontend/e2e
+                echo 'Step 5: Running Automated E2E Tests (Frontend)...'
+                bat 'npm run test-frontend'
             }
         }
     }
