@@ -23,7 +23,7 @@ const { updateBook } = require('./utils/editBookUtil')
 app.put('/books/:title', updateBook)
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + "/public/" + startPage);
+  res.sendFile(__dirname + "/public/" + startPage);
 });
 
 const { addBook } = require("./utils/bryanUtil");
@@ -34,10 +34,16 @@ app.get("/books", getBooks);
 
 server = app.listen(PORT, function () {
   const address = server.address();
-  const baseUrl = `http://${
-    address.address == "::" ? "localhost" : address.address
-  }:${address.port}`;
-  console.log(`Demo project at: ${baseUrl}`);
+
+
+  console.log('Demo project at: http://localhost:' + PORT);
+
+  // safety check for API test. ensure address is defined first
+  // if (address) {
+  //   const baseUrl = `http://${address.address == "::" ? "localhost" : address.address
+  //     }:${address.port}`;
+  //   console.log(`LibSys project at: ${baseUrl}`);
+  // }
 });
 
 module.exports = { app, server };

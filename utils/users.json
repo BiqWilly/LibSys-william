@@ -9,6 +9,21 @@
       "username": "test",
       "password": "test",
       "role": "user"
+    },
+    {
+      "username": "weww",
+      "password": "e2e2e2",
+      "role": "user"
+    },
+    {
+      "username": "wewwwe",
+      "password": "e2e2e2",
+      "role": "user"
+    },
+    {
+      "username": "123",
+      "password": "123",
+      "role": "user"
     }
   ]
 }

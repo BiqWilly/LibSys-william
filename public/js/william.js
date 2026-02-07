@@ -37,7 +37,7 @@ async function deleteBook(title) {
         }
 
         // spam lock from server
-        if (res.status === 200 && data.message.includes("Do not spam, wat 25s")) {
+        if (res.status === 200 && data.message.includes("Do not spam, wait 25s")) {
             const expireAt = Date.now() + 10_000;
             localStorage.setItem(SPAM_LOCK_KEY, expireAt.toString());
             disableDeleteButtons(expireAt);
@@ -81,4 +81,9 @@ function disableDeleteButtons(expireAt) {
         updateCountdown();
         const interval = setInterval(updateCountdown, 1000);
     });
+}
+
+// Export for Jest / Node
+if (typeof module !== 'undefined') {
+    module.exports = { openDeleteConfirm, deleteBook, disableDeleteButtons };
 }

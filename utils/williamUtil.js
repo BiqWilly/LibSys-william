@@ -38,6 +38,11 @@ async function readBooksFile() {
     const raw = await fs.readFile(BOOK_FILE, 'utf8');
     return JSON.parse(raw);
   } catch (e) {
+    // only handle file not found, let other errors propagate
+    if (e.code !== 'ENOENT') {
+      throw e;
+    }
+    
     // fallback template
     try {
       const tpl = await fs.readFile(TEMPLATE_FILE, 'utf8');
@@ -79,10 +84,17 @@ async function deleteBook(req, res) {
   }
 }
 
+// reset spam guard  for testing
+function resetSpamGuard() {
+  deleteTimestamps = [];
+  locked = false;
+}
+
 module.exports = {
   readBooksFile,
   writeBooksFile,
   spamGuardActive,
   registerDeleteAttempt,
   deleteBook,
+  resetSpamGuard
 };
