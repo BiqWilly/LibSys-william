@@ -16,7 +16,7 @@ pipeline {
                 bat 'npm install'
                 
                 echo 'Step 3: Running Automated Unit Tests (Jest)...'
-                bat 'npm test'
+                bat 'npm run test:william'
             }
         }
     }
