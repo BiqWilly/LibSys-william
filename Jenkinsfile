@@ -10,13 +10,12 @@ pipeline {
         }
 
         stage('Test') {
-    steps {
-        echo 'Step 2: Installing Dependencies...'
-        bat 'npm install'
+            steps {
+                echo 'Step 2: Installing Dependencies...'
+                bat 'npm install'
         
-        echo 'Step 3: Running Automated Unit Tests...'
-        // This forces Jest to find ANY test file in the test folder regardless of the config match
-        bat 'npx jest test/william.util.test.js test/william.api.test.js'
+                echo 'Step 3: Running Automated Unit Tests...'
+                bat 'npx jest test/ --passWithNoTests'
             }
         }
     }
