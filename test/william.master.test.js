@@ -11,7 +11,7 @@ const path = require('path');
 // Backend Imports
 const williamUtil = require('../utils/williamUtil');
 const { deleteBook, resetSpamGuard, readBooksFile } = williamUtil;
-const { deleteResource } = require('<rootDir>/resource-mgmt/utils/DeleteResourceUtil');
+const { deleteResource } = require('../resource-mgmt/utils/DeleteResourceUtil');
 
 // Frontend Import
 const williamFrontend = require('../public/js/william.js');
