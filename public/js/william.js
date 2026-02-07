@@ -87,5 +87,3 @@ function disableDeleteButtons(expireAt) {
 if (typeof module !== 'undefined') {
     module.exports = { openDeleteConfirm, deleteBook, disableDeleteButtons };
 }
-
-//testing jenkins trigger
