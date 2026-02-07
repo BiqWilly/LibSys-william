@@ -7,5 +7,7 @@ WORKDIR /app
 # Copy project files
 COPY . .
 
+RUN npm install
+
 # Final instruction
-CMD ["echo", "LibSys Build Successful"]
+CMD ["node", "index.js"]
