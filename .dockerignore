@@ -45,5 +45,4 @@ docs
 README.md
 
 # Dockerfile (optional if you have multi-stage build)
-Dockerfile
 docker-compose*
