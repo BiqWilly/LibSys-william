@@ -29,20 +29,25 @@ pipeline {
         }
 
         stage('Deploy') {
-    steps {
-        echo 'Step 6: Deploying LibSys to Local Environment...'
+            steps {
+            echo 'Step 6: Deploying LibSys to Local Environment...'
 
-        // check if container exists
-        bat 'docker ps -a --format "table {{.Names}}" | findstr libsys-container'
-        
-        // stop and remove container if it exists
-        bat 'IF %ERRORLEVEL% EQU 0 (docker stop libsys-container && docker rm libsys-container) ELSE (echo No existing container found, continuing...)'
+            bat '''
+                    docker ps -a --format "{{.Names}}" | findstr /R /C:"^libsys-container$" > nul
+                    if %ERRORLEVEL% EQU 0 (
+                        echo Stopping and removing existing container...
+                        docker stop libsys-container
+                        docker rm libsys-container
+                    ) else (
+                        echo No existing container found.
+                    )
+                    echo Running new container...
+                    docker run -d --name libsys-container -p 5050:5050 libsys-app
+                '''
 
-        // run the new container
-        bat 'docker run -d --name libsys-container -p 5050:5050 libsys-app'
-        echo 'Deployment Complete! Access at http://localhost:5050'
-    }
-}
+                echo 'Deployment Complete! Access at http://localhost:5050'
+            }
+        }
     }
 
     post {
