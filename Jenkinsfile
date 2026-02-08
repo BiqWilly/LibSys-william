@@ -28,20 +28,21 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy to Minikube') {
             steps {
-            echo 'Step 6: Deploying LibSys to Local Environment...'
+                echo 'Step 6: Orchestrating LibSys with Kubernetes...'
+                
+                // Deploy Libsys by applying the deployment and service YAML files 
+                bat 'kubectl apply -f deployment.yaml'
+                bat 'kubectl apply -f service.yaml'
 
-                // Stop container if it exists (ignore failure)
-                bat 'docker stop libsys-container || exit /b 0'
+                // Force a restart to ensure it uses the latest build
+                bat 'kubectl rollout restart deployment/libsys-deployment'
 
-                // Remove container if it exists (ignore failure)
-                bat 'docker rm libsys-container || exit /b 0'
-
-                // Run new container
-                bat 'docker run -d --name libsys-container -p 5050:5050 libsys-app'
-
-                echo 'Deployment Complete! Access at http://localhost:5050'
+                // to monitor the deployment and check its status
+                echo 'Deployment Complete! Checking status...'
+                bat 'kubectl get pods'
+                bat 'kubectl get services'
             }
         }
     }

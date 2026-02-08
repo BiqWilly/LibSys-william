@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: libsys-deployment
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: libsys
+  template:
+    metadata:
+      labels:
+        app: libsys
+    spec:
+      containers:
+      - name: libsys-app
+        image: libsys-app:latest
+        imagePullPolicy: Never 
+        ports:
+        - containerPort: 5050
