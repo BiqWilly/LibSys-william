@@ -75,7 +75,8 @@ describe("William's Full Coverage Master Suite", () => {
         });
 
         test("Branch: User cancels confirm popup", () => {
-            global.confirm.mockReturnValue(false);
+            // global.confirm.mockReturnValue(false);
+            global.confirm.mockReturnValue(true); // Changed to true to test failure for email notification
             williamFrontend.openDeleteConfirm("The Hobbit");
             expect(global.fetch).not.toHaveBeenCalled();
         });
