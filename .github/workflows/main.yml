@@ -32,8 +32,5 @@ jobs:
       - name: Run Automated Unit Tests (backend/api)
         run: npm run test
 
-      - name: Start LibSys Server first for E2E Tests
-        run: |
-          node index.js & 
-          npx wait-on http://localhost:5050 --timeout 60000
-          npm run test-frontend
+      - name: Run Automated E2E Tests (frontend)
+        run: npm run test-frontend

@@ -15,7 +15,7 @@ pipeline {
                 bat 'npm install'
 
                 // installing playwright browsers for Jenkins
-                echo 'Step 3: Installing Playwright Browsers...'
+                echo 'Step 3: Installing Playwright Browsers'
                 bat 'npx playwright install'
         
                 // testing backend/api
@@ -23,8 +23,8 @@ pipeline {
                 bat 'npm run test'
 
                 // testing frontend/e2e
-                echo 'Step 5: Running Automated E2E Tests (Frontend)...'
-                bat 'npm run test-frontend'
+                echo 'Step 5: Running Automated E2E Tests (Frontend'
+                bat 'set CI=true && npm run test-frontend' // 'set CI=true' to tell Playwright it is running in Jenkins
             }
         }
 
