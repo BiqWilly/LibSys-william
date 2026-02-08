@@ -49,9 +49,28 @@ pipeline {
     post {
         success {
             echo 'LibSys Build and Test Phases Successful!'
+            mail to: 'hatinhuy@gmail.com',
+                 subject: "SUCCESS: LibSys Build #${env.BUILD_NUMBER}",
+                 body: """Congratulations! The LibSys pipeline has completed successfully.
+                          
+Build Number: ${env.BUILD_NUMBER}
+Commit: ${env.GIT_COMMIT}
+Status: SUCCESS
+
+access the live application at http://localhost:5050
+Check Jenkins logs here: ${env.BUILD_URL}"""
         }
         failure {
             echo 'Pipeline failed. Check Console Output for errors.'
+            mail to: 'hatinhuy@gmail.com',
+                 subject: "FAILURE: LibSys Build #${env.BUILD_NUMBER}",
+                 body: """Attention: The LibSys pipeline has failed at a specific stage.
+                          
+Build Number: ${env.BUILD_NUMBER}
+Status: FAILED
+
+Please review the console output immediately to identify the issue:
+${env.BUILD_URL}console"""
         }
     }
 }
