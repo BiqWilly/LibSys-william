@@ -16,7 +16,7 @@ function attachAdminButtons(tr, book) {
 
     // Delete button
     const delBtn = document.createElement("button");
-    delBtn.textContent = "Delete";
+    delBtn.textContent = "Remove";
     delBtn.className = "btn small danger";
     delBtn.addEventListener("click", () => openDeleteConfirm(book.title));
     tdActions.appendChild(delBtn);
