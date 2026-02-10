@@ -45,7 +45,7 @@ describe("William's Full Coverage Master Suite", () => {
         req = { query: {}, params: {} };
 
         // Setup JSDOM
-        document.body.innerHTML = `<button class="danger">Delete</button>`;
+        document.body.innerHTML = `<button class="danger">Remove</button>`;
         localStorage.clear();
         global.alert = jest.fn();
         global.confirm = jest.fn();

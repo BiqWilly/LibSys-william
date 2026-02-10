@@ -9,4 +9,4 @@ spec:
   ports:
     - port: 5050
       targetPort: 5050
-      nodePort: 30007 #Minikube IP at this port
+      nodePort: 30080 #Minikube IP at this port
